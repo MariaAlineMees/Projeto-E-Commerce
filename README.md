@@ -1,4 +1,4 @@
-# 🛍️ Nos Vemos pelo Mundo – Loja Virtual
+# 🛍️ Nos Vemos pelo Mundo – Loja Virtual 🌍✈️
 
 Projeto de uma loja virtual voltada a produtos inspirados em viagens, como camisetas, canecas, chaveiros e agendas. O objetivo é proporcionar uma interface amigável para que usuários possam explorar, buscar e comprar produtos com facilidade.
 
@@ -85,7 +85,7 @@ Tela de pedidos e histórico de compras
 
 Administração de estoque
 
-👩‍💻 Autor
+👩🏻‍💻 Autor
 Projeto desenvolvido por Maria Aline Mees, como parte de estudos em desenvolvimento front-end com HTML, CSS e JavaScript do curso +Devs2Blu!
 
 💬 "Nos vemos pelo mundo!" 🌍✈️
