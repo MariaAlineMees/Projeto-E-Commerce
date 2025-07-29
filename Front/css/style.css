@@ -1,0 +1,70 @@
+/* Estiliza a barra de navegação principal */
+.navbar {
+  background-color: #eae7dc; 
+}
+
+/* Estiliza os links da navbar (logo e categorias) */
+.navbar a,
+.navbar-nav .nav-link {
+  color: #6e543d; 
+}
+
+/* Estiliza os links da navbar ao passar o mouse */
+.navbar a:hover,
+.navbar-nav .nav-link:hover {
+  color: #5c4a3a; 
+}
+
+/* Estiliza as imagens dos cards de produto */
+.card img {
+  height: 180px;           
+  object-fit: cover;       
+}
+
+/* Estiliza o fundo e cor padrão do corpo da página */
+body {
+  background-color: #f8f9f9; 
+  color: #333333;            
+}
+
+/* Estiliza a área interna do carrinho offcanvas */
+.offcanvas-body {
+  max-height: 80vh;       
+  overflow-y: auto;       
+}
+
+/* Botão personalizado com estilo bege e marrom */
+.btn-custom {
+  background-color: #d4c4b4; 
+  color: #5c4a3a;            
+  border: 1px solid #5c4a3a; 
+  font-weight: 500;          
+  padding: 0.4rem 0.8rem;    
+  border-radius: 6px;        
+  transition: all 0.3s ease; 
+}
+
+
+.btn-custom:hover {
+  background-color: #8e735b; 
+  color: white;              
+}
+
+/* Estiliza o rodapé da página */
+.custom-footer {
+  background-color: #dcdcdc; 
+  color: #4a4a4a;            
+}
+
+/* Estiliza a imagem do rodapé */
+.footer-img {
+  max-height: 120px;                         
+  opacity: 0.85;                             
+  filter: grayscale(10%) brightness(1.1);    
+}
+
+/* Estiliza o texto do rodapé */
+.footer-text {
+  font-size: 0.9rem;    
+  color: #4a4a4a;        
+}
