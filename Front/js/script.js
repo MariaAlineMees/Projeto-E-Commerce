@@ -1,33 +1,37 @@
-import products from "../data/products.js";
-console.log(products);
 // Estado do app
 let state = {
   products: [],     // produtos com estoque atualizado
   cart: {}          // { productId: quantidade }
 };
 
+let products = [];
+
+// Busca os produtos da API
+async function fetchProducts() {
+  const res = await fetch("http://localhost:3000/api/products");
+  products = await res.json();
+}
+
 // Inicialização
-document.addEventListener("DOMContentLoaded", () => {
-  loadState();
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadState();
   applyFilters();
   bindSearch();
   renderCart();
   bindClearCart();
 });
 
-// Carrega estoque e carrinho de localStorage
-function loadState() {
-  const savedProducts = localStorage.getItem("nvpm_products");
+// Carrega produtos da API e carrinho do localStorage
+async function loadState() {
   const savedCart = localStorage.getItem("nvpm_cart");
-  state.products = savedProducts
-    ? JSON.parse(savedProducts)
-    : products.map(p => ({ ...p })); // clone inicial
   state.cart = savedCart ? JSON.parse(savedCart) : {};
+
+  await fetchProducts();
+  state.products = products.map(p => ({ ...p })); // clona para manter compatibilidade
 }
 
 // Salva estado no localStorage
 function saveState() {
-  localStorage.setItem("nvpm_products", JSON.stringify(state.products));
   localStorage.setItem("nvpm_cart", JSON.stringify(state.cart));
 }
 
@@ -47,9 +51,9 @@ function applyFilters() {
     list = list.filter(p => p.categoria === cat);
   }
   if (term !== null) {
-  const termoBusca = term.toLowerCase().trim();
-  list = list.filter(p =>
-    p.name.toLowerCase().includes(termoBusca)
+    const termoBusca = term.toLowerCase().trim();
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(termoBusca)
     );
   }
   renderProducts(list);
@@ -67,9 +71,6 @@ function renderProducts(list) {
     const inCart = state.cart[p.id] || 0;
     const estoqueDisponivel = p.qtdEstoque - inCart;
     const btnDisabled = estoqueDisponivel < 1 ? "disabled" : "";
-
-    console.log("Renderizando produto:", p.name);
-
 
     col.innerHTML = `
       <div class="card h-100">
@@ -89,13 +90,12 @@ function renderProducts(list) {
     grid.appendChild(col);
   });
 
-  // Quando o botão "Adicionar" for clicado, chama a função addToCart com o ID do produto
   document.querySelectorAll(".add-btn").forEach(btn => {
     btn.addEventListener("click", () => addToCart(+btn.dataset.id));
   });
 }
 
-// Adiciona produto ao carrinho (sem alterar estoque ainda)
+// Adiciona produto ao carrinho
 function addToCart(id) {
   const prod = state.products.find(p => p.id === id);
   const inCart = state.cart[id] || 0;
@@ -143,20 +143,22 @@ function renderCart() {
 
   countEl.textContent = totalCount;
 
-  // Binda botões de remover
   document.querySelectorAll(".remove-btn").forEach(btn => {
     btn.addEventListener("click", () => removeFromCart(btn.dataset.id));
   });
 }
 
-// Finaliza compra: reduz estoque e limpa carrinho
-document.getElementById("finish-btn").addEventListener("click", () => {
-  for (const [id, qty] of Object.entries(state.cart)) {
-    const prod = state.products.find(p => p.id === +id);
-    prod.qtdEstoque -= qty;
-  }
+// Finaliza compra: envia carrinho para API e atualiza estoque
+document.getElementById("finish-btn").addEventListener("click", async () => {
+  await fetch("http://localhost:3000/api/products/checkout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ cart: state.cart })
+  });
+
   state.cart = {};
   saveState();
+  await loadState(); // recarrega produtos atualizados
   renderCart();
   applyFilters();
 });
@@ -193,6 +195,3 @@ function bindSearch() {
     window.location.href = "?" + params.toString();
   });
 }
-
-//Limpar o localStorage manualmente
-//localStorage.removeItem("nvpm_products");
