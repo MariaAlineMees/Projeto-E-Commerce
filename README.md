@@ -58,18 +58,21 @@ Basta abrir o arquivo index.html com duplo clique ou por algum servidor local (c
 │       └── ... (demais imagens)
 
 🖼️ Imagens de Telas
+
 🔷 Tela inicial (lista de produtos)
 
-<img src="Front/assets/images/Tela%20Inicial.png" alt="Tela inicial" width="300">
+<img src="Front/assets/images/tela_inicial.png" alt="Tela inicial" width="300">
+
 
 🔷 Filtro por categoria
 
-<img src="assets/images/Filtro por categoria.png" alt="Filtro por categoria" width="300">
+<img src="Front/assets/images/filtro_por_categoria.png" alt="Filtro por categoria" width="300">
 
 
 🔷 Carrinho lateral (offcanvas)
 
-<img src="assets/images/Carrinho lateral.png" alt="Carrinho lateral" width="300">
+<img src="Front/assets/images/carrinho_lateral.png" alt="Carrinho lateral" width="300">
+
 
 🚀 Possibilidades de Expansão
 Integração com back-end (Node.js, Firebase etc.)
