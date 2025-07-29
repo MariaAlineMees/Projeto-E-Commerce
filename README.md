@@ -9,20 +9,33 @@ Projeto de uma loja virtual voltada a produtos inspirados em viagens, como camis
 - Exibição de produtos organizados em categorias
 - Filtro por categoria e busca por nome
 - Carrinho de compras com controle de estoque
-- Persistência de dados via `localStorage`
+- Armazenamento do carrinho no navegador com `localStorage`
+- Atualização de estoque via API REST (back-end Node.js)
 - Layout responsivo com Bootstrap
 - Botão para limpar carrinho
 - Indicação de produtos esgotados
-- Finalização de compra (simulação)
+- Simulação de finalização da compra
+
+---
+
+## 🔗 Integração com o Back-end
+
+Este projeto consome dados da API criada no repositório:  
+[`Projeto-E-Commerce-Back`](https://github.com/MariaAlineMees/Projeto-E-Commerce-Back)
+
+- Endpoint: [`http://localhost:3000/api/products`](http://localhost:3000/api/products)
+
+> ⚠️ Atenção: o arquivo `data/products.js` foi mantido apenas para testes offline. Os dados agora são carregados dinamicamente da API.
 
 ---
 
 ## 🧰 Tecnologias Utilizadas
 
 - **HTML5** + **CSS3**
-- **JavaScript (ES Modules)**
+- **JavaScript**
 - **Bootstrap 5.3**
-- **LocalStorage API**
+- **LocalStorage API** (usada para salvar o carrinho temporariamente)
+- **Fetch API** (para consumo do back-end)
 
 ---
 
@@ -37,6 +50,8 @@ Projeto de uma loja virtual voltada a produtos inspirados em viagens, como camis
 2. **Abra o projeto no seu navegador:**
 
 Basta abrir o arquivo index.html com duplo clique ou por algum servidor local (como Live Server do VS Code).
+
+✅ Certifique-se de que o servidor da API (back-end) esteja rodando localmente antes de abrir o front-end.
 
 ✅ Importante: certifique-se de que as pastas assets/images, css/, js/ e data/ estejam com os arquivos corretos.
 
@@ -74,18 +89,17 @@ Basta abrir o arquivo index.html com duplo clique ou por algum servidor local (c
 <img src="Front/assets/images/carrinho_lateral.png" alt="Carrinho lateral" width="300">
 
 
-🚀 Possibilidades de Expansão
-Integração com back-end (Node.js, Firebase etc.)
+💡 Futuras Melhorias
+- Integração com sistema de pagamentos (ex: Mercado Pago, Stripe)
 
-Sistema de pagamento (ex: Mercado Pago, Stripe)
+- Cadastro e login de usuários
 
-Autenticação e cadastro de usuários
+- Histórico de pedidos
 
-Tela de pedidos e histórico de compras
+- Tela de administração de estoque
 
-Administração de estoque
 
-👩🏻‍💻 Autor
+👩🏻‍💻 Autora: 
 Projeto desenvolvido por Maria Aline Mees, como parte de estudos em desenvolvimento front-end com HTML, CSS e JavaScript do curso +Devs2Blu!
 
 💬 "Nos vemos pelo mundo!" 🌍✈️
